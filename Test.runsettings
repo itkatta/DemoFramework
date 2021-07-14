@@ -26,10 +26,10 @@
   </RunConfiguration>
     <!-- Parameters used by tests at run time -->
   <TestRunParameters>
-    <Parameter name="webAppUrl" value="https://www.accuweather.com/" />
+    <Parameter name="WebAppUrl" value="https://www.accuweather.com/" />
+    <Parameter name="ApiBaseUri" value="http://api.openweathermap.org/data/2.5/weather?" />
   </TestRunParameters>
    <MSTest>
     <DeploymentEnabled>False</DeploymentEnabled>
   </MSTest>
-
 </RunSettings>

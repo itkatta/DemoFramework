@@ -18,14 +18,20 @@
         /// <returns></returns>
         public IWebDriver Create(BrowserType browserType)
         {
-            switch (browserType)
+            try
             {
-                case BrowserType.Chrome:
-                    new DriverManager().SetUpDriver(new ChromeConfig());
-                    return new ChromeDriver(WebDrivercapabilities.DefaultChromeCapabilities());
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(browserType), browserType, $"{nameof(browserType)} is not supported");
+                switch (browserType)
+                {
+                    case BrowserType.Chrome:
+                        new DriverManager().SetUpDriver(new ChromeConfig());
+                        return new ChromeDriver(WebDrivercapabilities.DefaultChromeCapabilities());
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(browserType), browserType, $"{nameof(browserType)} is not supported");
+                }
             }
+            catch (Exception ex)
+            { }
+            return null;
 
         }
     }
