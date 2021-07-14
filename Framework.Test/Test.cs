@@ -120,6 +120,169 @@
 
         }
 
+        [TestMethod]
+        public void CalculatePressureVaianceForValidRange()
+        {
+            string city = "Bangalore";
+
+            // web
+            this.Driver.Navigate().GoToUrl(this.Config.WebAppUrl);
+
+            HomePage homePage = new HomePage(this.Driver);
+            homePage.SearchCity(city);
+
+            SearchResultPage searchResultPage = new SearchResultPage(this.Driver);
+
+            Data WebData = searchResultPage.GetDataFromUi();
+
+            Driver.Quit();
+
+            // Api
+
+            ApiRequest apiRequest = new ApiRequest(this.Config);
+
+            ApiResponse apiResponse = apiRequest.WithCity(city).WithUnit(Units.metric).Build().Execute();
+
+            Data ApiData = new Data(
+                apiResponse.Main.Temp,
+                apiResponse.Wind.Speed,
+                apiResponse.Main.Humidity,
+                apiResponse.Main.Pressure,
+                apiResponse.Clouds.All,
+                apiResponse.Visibility
+                );
+
+            double variance = Helper.CalculateVariance(WebData.Pressure, ApiData.Pressure);
+
+            double min = Double.Parse(this.Config.PressureMin);
+            double max = Double.Parse(this.Config.PressureMax);
+
+            Math.Round(variance, 2).Should().BeInRange(min, max);
+
+        }
+
+        [TestMethod]
+        public void CalculateCloudVaianceForValidRange()
+        {
+            string city = "Bangalore";
+
+            // web
+            this.Driver.Navigate().GoToUrl(this.Config.WebAppUrl);
+
+            HomePage homePage = new HomePage(this.Driver);
+            homePage.SearchCity(city);
+
+            SearchResultPage searchResultPage = new SearchResultPage(this.Driver);
+
+            Data WebData = searchResultPage.GetDataFromUi();
+
+            Driver.Quit();
+
+            // Api
+
+            ApiRequest apiRequest = new ApiRequest(this.Config);
+
+            ApiResponse apiResponse = apiRequest.WithCity(city).WithUnit(Units.metric).Build().Execute();
+
+            Data ApiData = new Data(
+                apiResponse.Main.Temp,
+                apiResponse.Wind.Speed,
+                apiResponse.Main.Humidity,
+                apiResponse.Main.Pressure,
+                apiResponse.Clouds.All,
+                apiResponse.Visibility
+                );
+
+            double variance = Helper.CalculateVariance(WebData.Cloud, ApiData.Cloud);
+
+            double min = Double.Parse(this.Config.CloudMin);
+            double max = Double.Parse(this.Config.CloudMax);
+
+            Math.Round(variance, 2).Should().BeInRange(min, max);
+
+        }
+        [TestMethod]
+        public void CalculateVisiblityVaianceForValidRange()
+        {
+            string city = "Bangalore";
+
+            // web
+            this.Driver.Navigate().GoToUrl(this.Config.WebAppUrl);
+
+            HomePage homePage = new HomePage(this.Driver);
+            homePage.SearchCity(city);
+
+            SearchResultPage searchResultPage = new SearchResultPage(this.Driver);
+
+            Data WebData = searchResultPage.GetDataFromUi();
+
+            Driver.Quit();
+
+            // Api
+
+            ApiRequest apiRequest = new ApiRequest(this.Config);
+
+            ApiResponse apiResponse = apiRequest.WithCity(city).WithUnit(Units.metric).Build().Execute();
+
+            Data ApiData = new Data(
+                apiResponse.Main.Temp,
+                apiResponse.Wind.Speed,
+                apiResponse.Main.Humidity,
+                apiResponse.Main.Pressure,
+                apiResponse.Clouds.All,
+                apiResponse.Visibility
+                );
+
+            double variance = Helper.CalculateVariance(WebData.Visiblity, ApiData.Visiblity);
+
+            double min = Double.Parse(this.Config.VisiblityMin);
+            double max = Double.Parse(this.Config.VisiblityMax);
+
+            Math.Round(variance, 2).Should().BeInRange(min, max);
+
+        }
+        [TestMethod]
+        public void CalculateHumidityVaianceForValidRange()
+        {
+            string city = "Bangalore";
+
+            // web
+            this.Driver.Navigate().GoToUrl(this.Config.WebAppUrl);
+
+            HomePage homePage = new HomePage(this.Driver);
+            homePage.SearchCity(city);
+
+            SearchResultPage searchResultPage = new SearchResultPage(this.Driver);
+
+            Data WebData = searchResultPage.GetDataFromUi();
+
+            Driver.Quit();
+
+            // Api
+
+            ApiRequest apiRequest = new ApiRequest(this.Config);
+
+            ApiResponse apiResponse = apiRequest.WithCity(city).WithUnit(Units.metric).Build().Execute();
+
+            Data ApiData = new Data(
+                apiResponse.Main.Temp,
+                apiResponse.Wind.Speed,
+                apiResponse.Main.Humidity,
+                apiResponse.Main.Pressure,
+                apiResponse.Clouds.All,
+                apiResponse.Visibility
+                );
+
+            double variance = Helper.CalculateVariance(WebData.Humidity, ApiData.Humidity);
+
+            double min = Double.Parse(this.Config.HumidityMin);
+            double max = Double.Parse(this.Config.HumidityMax);
+
+            Math.Round(variance, 2).Should().BeInRange(min, max);
+
+        }
+
+
 
 
         [TestCleanup]

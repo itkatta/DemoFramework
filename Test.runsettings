@@ -31,6 +31,14 @@
     <Parameter name="TempMax" value="1" />
     <Parameter name="WindMin" value="0" />
     <Parameter name="WindMax" value="1" />
+    <Parameter name="PressureMin" value="0" />
+    <Parameter name="PressureMax" value="1" />
+    <Parameter name="CloudMin" value="0" />
+    <Parameter name="CloudMax" value="1" />
+    <Parameter name="VisiblityMin" value="0" />
+    <Parameter name="VisiblityMax" value="1" />
+    <Parameter name="HumidityMin" value="0" />
+    <Parameter name="HumidityMax" value="1" />
   </TestRunParameters>
    <MSTest>
     <DeploymentEnabled>true</DeploymentEnabled>
