@@ -11,25 +11,28 @@
     <TargetPlatform>x86</TargetPlatform>
 
     <!-- Framework35 | [Framework40] | Framework45 -->
-    <TargetFrameworkVersion>Framework40</TargetFrameworkVersion>
+    <TargetFrameworkVersion>Framework45</TargetFrameworkVersion>
 
     <!-- Path to Test Adapters -->
     <TestAdaptersPaths>%SystemDrive%\Temp\foo;%SystemDrive%\Temp\bar</TestAdaptersPaths>
 
     <!-- TestSessionTimeout was introduced in Visual Studio 2017 version 15.5 -->
     <!-- Specify timeout in milliseconds. A valid value should be greater than 0 -->
-    <TestSessionTimeout>10000</TestSessionTimeout>
+    <TestSessionTimeout>720000000</TestSessionTimeout>
 
-    <!-- true or false -->
-    <!-- Value that specifies the exit code when no tests are discovered -->
-    <TreatNoTestsAsError>true</TreatNoTestsAsError>
   </RunConfiguration>
     <!-- Parameters used by tests at run time -->
   <TestRunParameters>
     <Parameter name="WebAppUrl" value="https://www.accuweather.com/" />
-    <Parameter name="ApiBaseUri" value="http://api.openweathermap.org/data/2.5/weather?" />
+    <Parameter name="ApiBaseUri2" value="http://api.openweathermap.org/data/2.5/weather?" />
+    <Parameter name="ApiBaseUri" value="api.openweathermap.org" />
+    <Parameter name="AppId" value="7fe67bf08c80ded756e598d6f8fedaea" />
+    <Parameter name="TempMin" value="0" />
+    <Parameter name="TempMax" value="1" />
+    <Parameter name="WindMin" value="0" />
+    <Parameter name="WindMax" value="1" />
   </TestRunParameters>
    <MSTest>
-    <DeploymentEnabled>False</DeploymentEnabled>
+    <DeploymentEnabled>true</DeploymentEnabled>
   </MSTest>
 </RunSettings>

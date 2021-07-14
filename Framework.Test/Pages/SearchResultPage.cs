@@ -6,6 +6,7 @@
     using Framework.Selenium;
     using Framework.Test.Models;
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Interactions;
 
     public class SearchResultPage : Base
     {
@@ -26,25 +27,26 @@
         {
             this.ClickOnClickableElement(this.MoreDetailsLink);
             this.Driver.Navigate().Refresh();
+            this.ClickOnClickableElement(this.MoreDetailsLink);
             this.IsElementDisplayedAfterWaiting(CurrentWeather).Should().BeTrue();
 
-            decimal temperature = this.GetTemperature();
-            decimal wind = this.GetWind();
-            decimal humidity = this.GetHumidity();
-            decimal pressure = GetPressure();
-            decimal cloud = GetCloudData();
-            decimal visiblity = GetVisiblity();
+            double temperature = Double.Parse(this.GetTemperature().ToString());
+            double wind = Double.Parse(Math.Round(this.GetWind(),2).ToString());
+            double humidity = this.GetHumidity();
+            double pressure = GetPressure();
+            double cloud = GetCloudData();
+            double visiblity = GetVisiblity();
 
             return new Data(temperature, wind, humidity, pressure, cloud, visiblity);
         }
 
-        private decimal GetVisiblity()
+        private double GetVisiblity()
         {
-            decimal text;
-            decimal multiplier = 1000;
+            double text;
+            double multiplier = 1000;
 
             this.IsElementDisplayedAfterWaiting(this.Visiblity).Should().BeTrue();
-            Decimal.TryParse(GetNumberFromString(this.GetTextOfElement(this.Visiblity)), out text).Should().BeTrue();
+            Double.TryParse(GetNumberFromString(this.GetTextOfElement(this.Visiblity)), out text).Should().BeTrue();
 
             return (text * multiplier);
         }
@@ -55,53 +57,53 @@
             return reg.Match(text).Value;
         }
 
-        private decimal GetCloudData()
+        private double GetCloudData()
         {
-            decimal text;
+            double text;
 
             this.IsElementDisplayedAfterWaiting(this.Cloud).Should().BeTrue();
-            Decimal.TryParse(GetNumberFromString(this.GetTextOfElement(this.Cloud)), out text).Should().BeTrue();
+            double.TryParse(GetNumberFromString(this.GetTextOfElement(this.Cloud)), out text).Should().BeTrue();
 
             return text;
         }
 
-        private decimal GetPressure()
+        private double GetPressure()
         {
-            decimal text;
+            double text;
 
             this.IsElementDisplayedAfterWaiting(this.Pressure).Should().BeTrue();
-            Decimal.TryParse(GetNumberFromString(this.GetTextOfElement(this.Pressure)), out text).Should().BeTrue();
+            double.TryParse(GetNumberFromString(this.GetTextOfElement(this.Pressure)), out text).Should().BeTrue();
 
             return text;
         }
 
-        private decimal GetHumidity()
+        private double GetHumidity()
         {
-            decimal text;
+            double text;
 
             this.IsElementDisplayedAfterWaiting(this.Humidity).Should().BeTrue();
-            Decimal.TryParse(GetNumberFromString(this.GetTextOfElement(this.Humidity)), out text).Should().BeTrue();
+            double.TryParse(GetNumberFromString(this.GetTextOfElement(this.Humidity)), out text).Should().BeTrue();
 
             return text;
         }
 
-        private decimal GetWind()
+        private double GetWind()
         {
-            decimal text;
-            decimal diviser = 3.6m;
+            double text;
+            double diviser = 3.6;
 
             this.IsElementDisplayedAfterWaiting(this.Wind).Should().BeTrue();
-            Decimal.TryParse(GetNumberFromString(this.GetTextOfElement(this.Wind)), out text).Should().BeTrue();
+            double.TryParse(GetNumberFromString(this.GetTextOfElement(this.Wind)), out text).Should().BeTrue();
 
             return (text / diviser);
         }
 
-        private decimal GetTemperature()
+        private double GetTemperature()
         {
-            decimal text;
+            double text;
 
             this.IsElementDisplayedAfterWaiting(this.CurrentTemperature).Should().BeTrue();
-            Decimal.TryParse(GetNumberFromString(this.GetTextOfElement(this.CurrentTemperature)), out text).Should().BeTrue();
+            double.TryParse(GetNumberFromString(this.GetTextOfElement(this.CurrentTemperature)), out text).Should().BeTrue();
 
             return text;
         }

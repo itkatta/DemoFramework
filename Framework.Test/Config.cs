@@ -14,6 +14,12 @@ namespace Framework.Test
     {
         public readonly string WebAppUrl;
         public readonly string ApiBaseUri;
+        public readonly string AppId;
+        public readonly string TempMin;
+        public readonly string TempMax;
+        public readonly string WindMin;
+        public readonly string WindMax;
+
 
         private static Config config;
 
@@ -31,6 +37,21 @@ namespace Framework.Test
                             break;
                         case nameof(ApiBaseUri):
                             ApiBaseUri=item.Value.ToString();
+                            break;
+                        case nameof(AppId):
+                            AppId = item.Value.ToString();
+                            break;
+                        case nameof(TempMax):
+                            TempMax = item.Value.ToString();
+                            break;
+                        case nameof(TempMin):
+                            TempMin = item.Value.ToString();
+                            break;
+                        case nameof(WindMax):
+                            WindMax = item.Value.ToString();
+                            break;
+                        case nameof(WindMin):
+                            WindMin = item.Value.ToString();
                             break;
                     }
 

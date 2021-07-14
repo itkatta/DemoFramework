@@ -1,6 +1,6 @@
 ﻿
 
-namespace Framework.Test.Models
+namespace Framework.Test.API
 {
     using System.Collections.Generic;
 
@@ -21,7 +21,7 @@ namespace Framework.Test.Models
 
     public class Main
     {
-        public int Temp;
+        public double Temp;
         public double FeelsLike;
         public double TempMin;
         public double TempMax;

@@ -2,14 +2,14 @@
 {
     public class Data
     {
-        public decimal Temperature;
-        public decimal Wind;
-        public decimal Humidity;
-        public decimal Pressure;
-        public decimal Cloud;
-        public decimal Visiblity;
+        public double Temperature;
+        public double Wind;
+        public double Humidity;
+        public double Pressure;
+        public double Cloud;
+        public double Visiblity;
 
-        public Data(decimal temperature, decimal wind, decimal humidity, decimal pressure, decimal cloud, decimal visiblity)
+        public Data(double temperature, double wind, double humidity, double pressure, double cloud, double visiblity)
         {
             Temperature = temperature;
             Wind = wind;

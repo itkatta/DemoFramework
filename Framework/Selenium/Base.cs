@@ -28,7 +28,15 @@
         /// Simple click method.
         /// </summary>
         /// <param name="locator">Element identification mechanism.</param>
-        protected void Click(By locator) => Driver.FindElement(locator).Click();
+        protected void Click(By locator)
+        {
+            try
+            {
+               var ele =  Driver.FindElement(locator);
+                ele.Click();
+            }
+            catch(Exception ex) { }
+        }
 
         /// <summary>
         /// Sets the text to web element.
