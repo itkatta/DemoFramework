@@ -17,8 +17,10 @@ namespace Framework.Test
         /// <returns></returns>
         public static double CalculateVariance(double first, double second)
         {
+            // mean
             double avg = (first + second) / 2;
 
+            // No need to divide as n-1 = 1;
             return square(first - avg) + square(first - avg);
         }
 
