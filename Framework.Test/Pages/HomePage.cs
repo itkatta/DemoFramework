@@ -4,13 +4,14 @@
     using OpenQA.Selenium;
 
     /// <summary>
-    ///
+    /// Class contains home page mapped objects and interactions.
     /// </summary>
     /// <seealso cref="Framework.Selenium.Base" />
     public class HomePage : Base
     {
-        private const string HomePageUrl = @"https://www.accuweather.com/";
-
+        /// <summary>
+        /// The search input box.
+        /// </summary>
         public By SearchInputBox = By.XPath("//input[@name='query']");
 
 
@@ -23,9 +24,10 @@
 
         }
 
-
-        public bool verifyHomePage => this.Driver.Url.Equals(HomePageUrl);
-
+        /// <summary>
+        /// Searches the city.
+        /// </summary>
+        /// <param name="city">The city.</param>
         internal void SearchCity(string city)
         {
             this.SetText(SearchInputBox, city);

@@ -14,22 +14,31 @@
     public class Test
     {
         /// <summary>
-        ///
+        /// Gets or sets the configuration.
         /// </summary>
+        /// <value>
+        /// The configuration.
+        /// </value>
         public Config Config { get; set; }
 
         /// <summary>
-        ///
+        /// Gets or sets the driver.
         /// </summary>
+        /// <value>
+        /// The driver.
+        /// </value>
         IWebDriver Driver { get; set; }
 
         /// <summary>
-        ///
+        /// Gets or sets the test context.
         /// </summary>
+        /// <value>
+        /// The test context.
+        /// </value>
         public TestContext TestContext { get; set; }
 
         /// <summary>
-        ///
+        /// Initializes this test instance.
         /// </summary>
         [TestInitialize]
         public void Init()
@@ -202,7 +211,7 @@
 
         }
         [TestMethod]
-        public void CalculateVisiblityVaianceForValidRange()
+        public void CalculateVisibilityVaianceForValidRange()
         {
             string city = "Bangalore";
 
@@ -233,10 +242,10 @@
                 apiResponse.Visibility
                 );
 
-            double variance = Helper.CalculateVariance(WebData.Visiblity, ApiData.Visiblity);
+            double variance = Helper.CalculateVariance(WebData.Visibility, ApiData.Visibility);
 
-            double min = Double.Parse(this.Config.VisiblityMin);
-            double max = Double.Parse(this.Config.VisiblityMax);
+            double min = Double.Parse(this.Config.VisibilityMin);
+            double max = Double.Parse(this.Config.VisibilityMax);
 
             Math.Round(variance, 2).Should().BeInRange(min, max);
 
@@ -282,9 +291,9 @@
 
         }
 
-
-
-
+        /// <summary>
+        /// Cleanups this test instance.
+        /// </summary>
         [TestCleanup]
         public void Cleanup()
         {
