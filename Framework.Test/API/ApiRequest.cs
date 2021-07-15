@@ -6,14 +6,25 @@ using Newtonsoft.Json;
 
 namespace Framework.Test.API
 {
+    /// <summary>
+    /// Api request class.
+    /// </summary>
     public class ApiRequest
     {
-
-
-
+        /// <summary>
+        /// The URI builder instance.
+        /// </summary>
         private UriBuilder builder;
+
+        /// <summary>
+        /// The query parameter for request.
+        /// </summary>
         private StringBuilder query;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiRequest"/> class.
+        /// </summary>
+        /// <param name="config">The configuration.</param>
         public ApiRequest(Config config)
         {
             this.builder = new UriBuilder();
@@ -22,18 +33,32 @@ namespace Framework.Test.API
             this.query = new StringBuilder($"appid={config.AppId}&");
         }
 
+        /// <summary>
+        /// Create query parameter with the city.
+        /// </summary>
+        /// <param name="cityName">Name of the city.</param>
+        /// <returns></returns>
         public ApiRequest WithCity(string cityName)
         {
             this.query.Append($"q={cityName}&");
             return this;
         }
 
+        /// <summary>
+        /// Create query parameter with for XML format.
+        /// </summary>
+        /// <returns></returns>
         public ApiRequest WithXmlFormat()
         {
             this.query.Append($"mode=xml&");
             return this;
         }
 
+        /// <summary>
+        /// Create query parameter with for unit.
+        /// </summary>
+        /// <param name="unit">The unit.</param>
+        /// <returns></returns>
         public ApiRequest WithUnit(Units unit)
         {
             switch (unit)
@@ -48,12 +73,20 @@ namespace Framework.Test.API
             return this;
         }
 
+        /// <summary>
+        /// Builds this instance.
+        /// </summary>
+        /// <returns></returns>
         public ApiRequest Build()
         {
             this.builder.Query = this.query.ToString();
             return this;
         }
 
+        /// <summary>
+        /// Executes this built instance.
+        /// </summary>
+        /// <returns></returns>
         public ApiResponse Execute()
         {
             HttpResponseMessage result;
@@ -75,6 +108,9 @@ namespace Framework.Test.API
         }
     }
 
+    /// <summary>
+    /// Unit enum.
+    /// </summary>
     public enum Units
     {
         metric,

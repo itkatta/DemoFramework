@@ -1,35 +1,97 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Framework.Test
+﻿namespace Framework.Test
 {
-    [TestClass]
+    using System.Collections;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// Singleton config class.
+    /// </summary>
     public class Config
     {
-        public readonly string WebAppUrl;
-        public readonly string ApiBaseUri;
-        public readonly string AppId;
-        public readonly string TempMin;
-        public readonly string TempMax;
-        public readonly string WindMin;
-        public readonly string WindMax;
-        public readonly string PressureMin;
-        public readonly string PressureMax;
-        public readonly string CloudMin;
-        public readonly string CloudMax;
-        public readonly string VisiblityMin;
-        public readonly string VisiblityMax;
-        public readonly string HumidityMin;
-        public readonly string HumidityMax;
+        /// <summary>
+        /// The configuration
+        /// </summary>
         private static Config config;
 
+        /// <summary>
+        /// The web application URL.
+        /// </summary>
+        public readonly string WebAppUrl;
 
+        /// <summary>
+        /// The API base URI.
+        /// </summary>
+        public readonly string ApiBaseUri;
+
+        /// <summary>
+        /// The application identifier.
+        /// </summary>
+        public readonly string AppId;
+
+        /// <summary>
+        /// The temporary minimum.
+        /// </summary>
+        public readonly string TempMin;
+
+        /// <summary>
+        /// The temporary maximum.
+        /// </summary>
+        public readonly string TempMax;
+
+        /// <summary>
+        /// The wind minimum.
+        /// </summary>
+        public readonly string WindMin;
+
+        /// <summary>
+        /// The wind maximum
+        /// </summary>
+        public readonly string WindMax;
+
+        /// <summary>
+        /// The pressure minimum.
+        /// </summary>
+        public readonly string PressureMin;
+
+        /// <summary>
+        /// The pressure maximum.
+        /// </summary>
+        public readonly string PressureMax;
+
+        /// <summary>
+        /// The cloud minimum.
+        /// </summary>
+        public readonly string CloudMin;
+
+        /// <summary>
+        /// The cloud maximum.
+        /// </summary>
+        public readonly string CloudMax;
+
+        /// <summary>
+        /// The visibility minimum.
+        /// </summary>
+        public readonly string VisibilityMin;
+
+        /// <summary>
+        /// The visibility maximum.
+        /// </summary>
+        public readonly string VisibilityMax;
+
+        /// <summary>
+        /// The humidity minimum.
+        /// </summary>
+        public readonly string HumidityMin;
+
+        /// <summary>
+        /// The humidity maximum.
+        /// </summary>
+        public readonly string HumidityMax;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Config"/> class.
+        /// </summary>
+        /// <param name="testContext">The test context.</param>
         private Config(TestContext testContext)
         {
             if (testContext != null)
@@ -71,11 +133,11 @@ namespace Framework.Test
                         case nameof(CloudMin):
                             CloudMin = item.Value.ToString();
                             break;
-                        case nameof(VisiblityMax):
-                            VisiblityMax = item.Value.ToString();
+                        case nameof(VisibilityMax):
+                            VisibilityMax = item.Value.ToString();
                             break;
-                        case nameof(VisiblityMin):
-                            VisiblityMin = item.Value.ToString();
+                        case nameof(VisibilityMin):
+                            VisibilityMin = item.Value.ToString();
                             break;
                         case nameof(HumidityMax):
                             HumidityMax = item.Value.ToString();
@@ -90,6 +152,11 @@ namespace Framework.Test
 
         }
 
+        /// <summary>
+        /// Instances the specified test context.
+        /// </summary>
+        /// <param name="testContext">The test context.</param>
+        /// <returns></returns>
         public static Config Instance(TestContext testContext)
         {
 

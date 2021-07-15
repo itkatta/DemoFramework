@@ -24,7 +24,6 @@
     <!-- Parameters used by tests at run time -->
   <TestRunParameters>
     <Parameter name="WebAppUrl" value="https://www.accuweather.com/" />
-    <Parameter name="ApiBaseUri2" value="http://api.openweathermap.org/data/2.5/weather?" />
     <Parameter name="ApiBaseUri" value="api.openweathermap.org" />
     <Parameter name="AppId" value="7fe67bf08c80ded756e598d6f8fedaea" />
     <Parameter name="TempMin" value="0" />
@@ -35,8 +34,8 @@
     <Parameter name="PressureMax" value="1" />
     <Parameter name="CloudMin" value="0" />
     <Parameter name="CloudMax" value="1" />
-    <Parameter name="VisiblityMin" value="0" />
-    <Parameter name="VisiblityMax" value="1" />
+    <Parameter name="VisibilityMin" value="0" />
+    <Parameter name="VisibilityMax" value="1" />
     <Parameter name="HumidityMin" value="0" />
     <Parameter name="HumidityMax" value="1" />
   </TestRunParameters>

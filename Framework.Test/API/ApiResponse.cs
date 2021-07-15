@@ -1,10 +1,7 @@
-﻿
-
-namespace Framework.Test.API
+﻿namespace Framework.Test.API
 {
     using System.Collections.Generic;
 
-    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
     public class Coord
     {
         public double Lon;
